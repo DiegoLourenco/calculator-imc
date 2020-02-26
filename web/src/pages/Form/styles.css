@@ -1,0 +1,38 @@
+.content form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content p {
+  text-align: center;
+  font-size: 17px;
+}
+
+.content input {
+  height: 50px;
+  color: #444;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.content input:focus {
+  border: 1px solid #18a0fb;
+}
+
+.content button {
+  height: 50px;
+  background: #444;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.content button:hover {
+  background: #333;
+  cursor: pointer;
+}
