@@ -4,6 +4,8 @@ import "./styles.css";
 import arrowBack from "../../assets/arrow-back.svg";
 import RankImc from "../../utils/RankImc";
 
+import Tr from '../../components/Tr'
+
 export default function Result({ history, location }) {
   const name = location.state.name;
   const weight = location.state.weight;
@@ -46,7 +48,7 @@ export default function Result({ history, location }) {
             <td>18,5 e 24,9</td>
             <td>62 a 83,4 Kg</td>
           </tr>
-          <tr className={rowActive("overweigth")}>
+          <tr className={rowActive("overweight")}>
             <td>Sobrepeso</td>
             <td>24,9 a 30</td>
             <td>83,4 a 100,5 Kg</td>
