@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export default function Form({ history }) {
-  
   const [name, setName] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -19,7 +18,6 @@ export default function Form({ history }) {
   function handleCalculate(event) {
     event.preventDefault();
     const imc = parse(weight) / parse(height) ** 2;
-
     history.push("/resultado", { name, imc, weight: parse(weight) });
   }
 

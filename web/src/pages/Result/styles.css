@@ -4,20 +4,21 @@
 
 .content p {
   font-weight: bold;
+  text-align: left;
 }
 
-.success {
+p.success {
   color: #00b227;
 }
-.danger {
+p.danger {
   color: #db0000;
 }
 
-.active-success {
+tr.success {
   background-color: #aefbae;
 }
 
-.active-danger {
+tr.danger {
   background-color: #e68d73;
 }
 
