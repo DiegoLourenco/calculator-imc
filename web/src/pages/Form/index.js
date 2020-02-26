@@ -20,7 +20,7 @@ export default function Form({ history }) {
     event.preventDefault();
     const imc = parse(weight) / parse(height) ** 2;
 
-    history.push("/resultado", { name, imc, parse(weight) });
+    history.push("/resultado", { name, imc, weight: parse(weight) });
   }
 
   return (
