@@ -4,8 +4,6 @@ import "./styles.css";
 import arrowBack from "../../assets/arrow-back.svg";
 import RankImc from "../../utils/RankImc";
 
-import Tr from '../../components/Tr'
-
 export default function Result({ history, location }) {
   const name = location.state.name;
   const weight = location.state.weight;
