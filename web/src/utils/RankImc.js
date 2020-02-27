@@ -8,7 +8,7 @@ export default function RankImc(name, imc, weight) {
       active: danger,
       rank: "thinness",
       message: `Sinto muito ${name}, mas o seu IMC é de ${imc} kg/m2, por isso você está abaixo 
-        do peso e deveria engordar no mínimo ${idealWeight} kg.`
+        do peso e deveria engordar no mínimo ${Math.abs(idealWeight)} kg.`
     };
   }
 
@@ -26,7 +26,7 @@ export default function RankImc(name, imc, weight) {
       active: danger,
       rank: "overweight",
       message: `Sinto muito ${name}, mas o seu IMC é de ${imc} kg/m2, por isso você está
-        acima do peso e deveria emagrecer no mínimo ${idealWeight} Kg.`
+        acima do peso e deveria emagrecer no mínimo ${Math.abs(idealWeight)} Kg.`
     };
   }
 
@@ -36,7 +36,7 @@ export default function RankImc(name, imc, weight) {
       active: danger,
       rank: "obesity",
       message: `Sinto muito ${name}, mas o seu IMC é de ${imc} kg/m2, por isso você está
-      muito acima do peso, você deveria emagrecer ${idealWeight} Kg.`
+      muito acima do peso, você deveria emagrecer ${Math.abs(idealWeight)} Kg.`
     };
   }
 }
