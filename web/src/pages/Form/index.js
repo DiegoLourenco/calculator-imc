@@ -15,10 +15,37 @@ export default function Form({ history }) {
     return parseFloat(field.replace(",", "."));
   }
 
+  /**
+   * Validate fields and send params to result
+   * @param {Array} fields
+   */
+  function validateField(fields) {
+    if (Array.isArray(fields)) {
+      const validate = fields.map(field => {
+        if (!field.value) {
+          alert(`O campo ${field.name} é obrigatório!`);
+          return false;
+        }
+        return true;
+      });
+
+      // Return validation if true or false
+      return validate.includes(false) ? false : true;
+    }
+    throw new Error("Field not array");
+  }
+
   function handleCalculate(event) {
     event.preventDefault();
     const imc = parse(weight) / parse(height) ** 2;
-    history.push("/resultado", { name, imc, weight: parse(weight) });
+    const validated = validateField([
+      { name: "Nome", value: name },
+      { name: "Altura", value: height },
+      { name: "Peso", value: weight }
+    ]);
+
+    if (validated)
+      history.push("/resultado", { name, imc, weight: parse(weight) });
   }
 
   return (
@@ -35,6 +62,7 @@ export default function Form({ history }) {
           placeholder="Seu nome"
           value={name}
           onChange={event => setName(event.target.value)}
+          required
         />
         <input
           type="text"
@@ -43,6 +71,7 @@ export default function Form({ history }) {
           placeholder="Sua altura (m)"
           value={height}
           onChange={event => setHeight(event.target.value)}
+          required
         />
         <input
           type="text"
@@ -51,6 +80,7 @@ export default function Form({ history }) {
           placeholder="Seu peso (kg)"
           value={weight}
           onChange={event => setWeight(event.target.value)}
+          required
         />
         <button type="submit">Calcular</button>
       </form>
