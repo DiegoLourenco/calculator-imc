@@ -1,6 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { Text } from "react-native";
+
+import Container from "../components/Container";
 
 export default function Result() {
-  return <View />;
+  return (
+    <Container>
+      <Text>Resultado</Text>
+    </Container>
+  );
 }
