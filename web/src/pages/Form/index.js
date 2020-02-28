@@ -1,51 +1,26 @@
 import React, { useState } from "react";
 import "./styles.css";
 
+import parse from "../../utils/parse";
+import validate from "../../utils/validate";
+
 export default function Form({ history }) {
   const [name, setName] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
-  /**
-   * Convert a string to number
-   * @param {string} field
-   * @return {Number}
-   */
-  function parse(field) {
-    return parseFloat(field.replace(",", "."));
-  }
-
-  /**
-   * Validate fields and send params to result
-   * @param {Array} fields
-   */
-  function validateField(fields) {
-    if (Array.isArray(fields)) {
-      const validate = fields.map(field => {
-        if (!field.value) {
-          alert(`O campo ${field.name} é obrigatório!`);
-          return false;
-        }
-        return true;
-      });
-
-      // Return validation if true or false
-      return validate.includes(false) ? false : true;
-    }
-    throw new Error("Field not array");
-  }
-
   function handleCalculate(event) {
     event.preventDefault();
-    const imc = parse(weight) / parse(height) ** 2;
-    const validated = validateField([
+    const validation = validate([
       { name: "Nome", value: name },
       { name: "Altura", value: height },
       { name: "Peso", value: weight }
     ]);
 
-    if (validated)
+    if (validation) {
+      let imc = parse(weight) / parse(height) ** 2;
       history.push("/resultado", { name, imc, weight: parse(weight) });
+    }
   }
 
   return (
