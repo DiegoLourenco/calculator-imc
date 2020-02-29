@@ -9,11 +9,6 @@ const Stack = createStackNavigator();
 
 const options = {
   headerTransparent: true,
-  headerTitleAlign: "center",
-  headerTitleStyle: {
-    fontSize: 25,
-    fontWeight: "bold",
-  },
   headerBackTitleVisible: false,
   headerBackTitleStyle: {
     color: "#fff"

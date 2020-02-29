@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableHighlight } from "react-native";
 
 import Container from "../components/Container";
+import parse from "../utils/parse";
+import validate from "../utils/validate";
 
 export default function Form({ navigation }) {
   const [name, setName] = useState("");
@@ -9,7 +11,20 @@ export default function Form({ navigation }) {
   const [weight, setWeight] = useState("");
 
   function handleCalculate() {
-    
+    const validation = validate([
+      { name: "Nome", value: name },
+      { name: "Altura", value: height },
+      { name: "Peso", value: weight }
+    ]);
+
+    if (validation) {
+      let imc = parse(weight) / parse(height) ** 2;
+      navigation.navigate("result", {
+        name,
+        imc: imc.toFixed(1),
+        weight: parse(weight)
+      });
+    }
   }
 
   return (
@@ -26,14 +41,12 @@ export default function Form({ navigation }) {
       />
       <TextInput
         style={styles.input}
-        keyboardType="numeric"
         placeholder="Sua altura (m)"
         placeholderTextColor="#444"
         onChangeText={setHeight}
       />
       <TextInput
         style={styles.input}
-        keyboardType="numeric"
         placeholder="Seu peso (kg)"
         placeholderTextColor="#444"
         onChangeText={setWeight}
